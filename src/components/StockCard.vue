@@ -1,7 +1,7 @@
 <template>
   <div class="stock-card">
     <!-- Display stock data -->
-    <h4>{{ stock.idxNm }} ({{ stock.id }})</h4>
+    <h4>{{ stock.idxNm }} ({{ stock.basIdx }})</h4>
     <h5>{{ stock.basDt }}</h5>
     <h4>{{ stock.clpr }} ({{ stock.vs }}, {{ stock.fltRt}}%) </h4>
   </div>
