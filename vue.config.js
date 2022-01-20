@@ -1,6 +1,6 @@
 module.exports = {
   lintOnSave: false,
   devServer: {
-    proxy: 'http://localhost:6001/',
+    proxy: 'https://api-server-i3z0.onrender.com/',
   },
 }
