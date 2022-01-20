@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const gonggongIndex = axios.create({
     baseURL: process.env.VUE_APP_GONGGONG_URL,
-    withCredentials: true,
+    withCredentials: false,
     
 })
 
