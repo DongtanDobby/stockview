@@ -2,14 +2,14 @@
   <h1>Stock prices</h1>
 
   <div class="stocks">
-    <StockCard v-for="stock in stocks" :key="stock.basIdx" :stock="stock" />
+    <StockCard v-for="(stock, index) in stocks" :key="index" :stock="stock" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import StockCard from '@/components/StockCard.vue'
-import axios from 'axios'
+import StockService from '@/services/StockService.js'
 
 export default {
   name: 'StockList',
@@ -25,9 +25,8 @@ export default {
   mounted(){
   },
   created() { 
-    axios.get(process.env.VUE_APP_URL_GONGGONG)
+    StockService.getMarketIndexList()
     .then(response => {
-      console.log('stocks:', response.data);
       this.stocks = response.data.response.body.items.item;
     })
     .catch(error => {
