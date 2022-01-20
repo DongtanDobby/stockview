@@ -10,8 +10,9 @@ const routes = [
     component: StockList
   },
   {
-    path: '/stock/IT H/W',
+    path: '/stock/:idxNm',
     name: 'StockDetail',
+    props: true,
     component: StockDetail
   },
   {

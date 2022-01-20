@@ -1,5 +1,5 @@
 <template>
-<router-link to="/stock/IT H/W">
+<router-link :to="{ name:'StockDetail', params: {'idxNm': stock.idxNm} }">
 
   <div class="stock-card">
     <!-- Display stock data -->

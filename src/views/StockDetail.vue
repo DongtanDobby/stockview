@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h4>{{ stock.idxNm }} ({{ stock.basIdx }})</h4>
-    <h5>{{ stock.basDt }}</h5>
-    <h4>{{ stock.clpr }} ({{ stock.vs }}, {{ stock.fltRt}}%) </h4>
+  <div v-if="stockDetail">
+    <h4>{{ stockDetail.idxNm }} ({{ stockDetail.basIdx }})</h4>
+    <h5>{{ stockDetail.basDt }}</h5>
+    <h4>{{ stockDetail.clpr }} ({{ stockDetail.vs }}, {{ stockDetail.fltRt}}%) </h4>
   </div>
 </template>
 
@@ -11,20 +11,20 @@ import StockService from '@/services/StockService.js'
 
 
 export default ({
+    // add props for dynamic routing
+    props: ['idxNm'],
     data() {
         return {
-            stock: null,
+            stockDetail: null,
             params: {
-                idxNm: 'IT H/W',
-                basDt: 20220119
+                'idxNm': this.idxNm,
             }
         }
     },
     created() {
         StockService.getMarketIndex(this.params)
         .then(response => {
-            console.log(response.data);
-            this.stock = response.data.response.body.items.item[0];
+            this.stockDetail = response.data.response.body.items.item[0];
         })
         .catch(error => {
         console.log(error)
