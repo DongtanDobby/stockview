@@ -1,20 +1,26 @@
 <template>
+<router-link :to="{ name:'StockDetail', params: {'idxNm': stock.idxNm} }">
+
   <div class="stock-card">
     <!-- Display stock data -->
-    <h4>{{ stock.title }}</h4>
-    <h5>( {{ stock.id }} )</h5>
-    <h5>{{ stock.date }}</h5>
-    <h4>₩ {{ stock.price }}</h4>
+    <h4>{{ stock.idxNm }} ({{ stock.basIdx }})</h4>
+    <h5>{{ stock.basDt }}</h5>
+    <h4>{{ stock.clpr }} ({{ stock.vs }}, {{ stock.fltRt}}%) </h4>
   </div>
+</router-link>
 </template>
 
 <script>
+import StockService from '@/services/StockService.js'
+
 export default {
   name: 'StockCard',
   props: {
-    stock: Object
-  }
+    stock: Object,
+  },
 }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -2,13 +2,14 @@
   <h1>Stock prices</h1>
 
   <div class="stocks">
-    <StockCard v-for="stock in stocks" :key="stock.id" :stock="stock" />
+    <StockCard v-for="(stock, index) in stocks" :key="index" :stock="stock" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import StockCard from '@/components/StockCard.vue'
+import StockService from '@/services/StockService.js'
 
 export default {
   name: 'StockList',
@@ -17,30 +18,20 @@ export default {
   },
   data() {
     return {
-      stocks: [
-      {id: 123412,
-        title: 'Stock Name',
-        date: 'Jan 17, 2022',
-        price: '34,456,000',
-      },
-      {id: 123412,
-        title: 'Stock Name',
-        date: 'Jan 17, 2022',
-        price: '34,456,000',
-      },
-      {id: 123412,
-        title: 'Stock Name',
-        date: 'Jan 17, 2022',
-        price: '34,456,000',
-      },
-      {id: 123412,
-        title: 'Stock Name',
-        date: 'Jan 17, 2022',
-        price: '34,456,000',
-      },
-    ]
+      stocks: null
 
     }
+  },
+  mounted(){
+  },
+  created() { 
+    StockService.getMarketIndexList()
+    .then(response => {
+      this.stocks = response.data.response.body.items.item;
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 }
 </script>
