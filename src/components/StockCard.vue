@@ -1,5 +1,7 @@
 <template>
-<router-link :to="{ name:'StockDetail', params: {'idxNm': stock.idxNm} }">
+<router-link 
+class="stock-link" 
+:to="{ name:'StockDetail', params: {'idxNm': stock.idxNm} }">
 
   <div class="stock-card">
     <!-- Display stock data -->
@@ -37,4 +39,9 @@ export default {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }
+.stock-link {
+  color: black;
+  text-decoration: none;
+}
+
 </style>
