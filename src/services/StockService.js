@@ -15,7 +15,7 @@ export default {
         return gonggongIndex.get('/getStockMarketIndex' + '?numOfRows=' + perPage + '&pageNo=' + pageNo )
     },
     getMarketIndex(idxNm) {
-        return gonggongIndex.get('/getStockMarketIndex' + '?idxNm=' + idxNm )
+        return gonggongIndex.get('/getStockMarketIndex' + '?idxNm=' + encodeURIComponent(idxNm))
     },
     getMarketIndexPage(perPage, pageNo) {
         return gonggongIndex.get('/getStockMarketIndex', { headers: {'numOfRows': perPage, 'pageNo': pageNo}} )

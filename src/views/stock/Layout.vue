@@ -1,8 +1,21 @@
 <template>
   <div v-if="stockDetail">
     <h4>{{ stockDetail.idxNm }} ({{ stockDetail.basIdx }})</h4>
-    <h5>{{ stockDetail.basDt }}</h5>
-    <h4>{{ stockDetail.clpr }} ({{ stockDetail.vs }}, {{ stockDetail.fltRt}}%) </h4>
+
+    <div id="nav">
+        <router-link :to="{ name: 'StockDetail' }">
+            Detail
+        </router-link>
+        |
+        <router-link :to="{ name: 'StockNews' }">
+            News
+        </router-link>
+        |
+        <router-link :to="{ name: 'StockInterest' }">
+            Interest
+        </router-link>
+    </div>
+    <router-view :stockDetail="stockDetail" />
   </div>
 </template>
 

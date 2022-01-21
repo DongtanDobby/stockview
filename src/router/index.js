@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import StockList from '../views/StockList.vue'
-import StockDetail from '../views/StockDetail.vue'
+import StockLayout from '../views/stock/Layout.vue'
+import StockDetail from '../views/stock/Detail.vue'
+import StockInterest from '../views/stock/Interest.vue'
+import StockNews from '../views/stock/News.vue'
 import About from '../views/About.vue'
 
 const routes = [
@@ -13,10 +16,27 @@ const routes = [
   },
   {
     path: '/stock/:idxNm',
-    name: 'StockDetail',
+    name: 'StockLayout',
     props: true,
-    component: StockDetail
-  },
+    component: StockLayout,
+    children: [
+      {
+        path: '',
+        name: 'StockDetail',
+        component: StockDetail
+      },
+      {
+        path: 'interest',
+        name: 'StockInterest',
+        component: StockInterest
+      },  
+      {
+        path: 'news',
+        name: 'StockNews',
+        component: StockNews
+      },  
+    ]
+  },    
   {
     path: '/about',
     name: 'About',
