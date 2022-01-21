@@ -28,9 +28,10 @@ export default {
 .stock-card {
   padding: 20px;
   width: 250px;
+  height: 200px;
   cursor: pointer;
   border: 1px solid #39495c;
-  margin-bottom: 18px
+  margin: 10px 10px 10px 10px;
 }
 .stock-card:hover{
   transform: scale(1.01);

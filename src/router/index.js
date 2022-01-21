@@ -7,7 +7,9 @@ const routes = [
   {
     path: '/',
     name: 'StockList',
-    component: StockList
+    component: StockList,
+    //페이지처리. 만약 페이지에 해당하는 숫자 입력이 없으면 첫 페이지로
+    props: route => ({ pageNo: parseInt(route.query.pageNo) || 1 , perPage: parseInt(route.query.perPage) || 10})
   },
   {
     path: '/stock/:idxNm',

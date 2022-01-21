@@ -16,13 +16,10 @@ export default ({
     data() {
         return {
             stockDetail: null,
-            params: {
-                'idxNm': this.idxNm,
-            }
         }
     },
     created() {
-        StockService.getMarketIndex(this.params)
+        StockService.getMarketIndex(this.idxNm)
         .then(response => {
             this.stockDetail = response.data.response.body.items.item[0];
         })
